@@ -1,0 +1,37 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <h4>Enter title of your product: </h4>
+    <%= form.text_field :title, class: "form-control input-lg", placeholder: "Ex: Used Black T-Shirt" %>
+  </div>
+  
+  <div class="form-group">
+    <h5>Upload image</h5>
+    <%= form.file_field :photo, id:"file-input", class: "form-control input-lg" %>
+  </div>
+  
+  <div class="form-group">
+    <h4>Enter description</h4>
+    <%= form.text_area :description, class: "form-control input-lg", placeholder: "Ex: Used Black T-Shirt" %>
+  </div>
+  
+  <div class="form-group">
+    <h4>Enter price</h4>
+    <%= form.number_field :price, class: "form-control input-lg", placeholder: "Ex: 100" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Create Product", class: "btn btn-success btn-lg" %>
+  </div>
+<% end %>

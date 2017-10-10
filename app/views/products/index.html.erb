@@ -1,0 +1,22 @@
+<div class="container">
+  
+  <div class="row">
+    <p id="notice"><%= notice %></p>
+    <h1>All Products <%= link_to 'Add Product', new_product_path, class: "btn btn-success btn-lg" %></h1>
+  </div>
+  
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-4 portfolio-item">
+          <%= link_to product do %>
+            <%= image_tag product.photo(:square), class: "img-responsive" %>
+          <% end %>
+          <h3>
+              <%= link_to product.title, product %>
+          </h3>
+          <p><%= product.description %></p>
+      </div>
+    <% end %>
+  </div>
+  
+</div>
